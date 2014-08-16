@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root_path 'recipes#index'
+  root 'recipes#index'
 
   get '/recipes' => 'recipes#my_recipes'
   get 'recipes/:id' => 'recipes#catalog'

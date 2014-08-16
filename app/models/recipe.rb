@@ -4,32 +4,32 @@ class Recipe < ActiveRecord::Base
   has_one :shopping_list
 
 def self.m2tea(num)
-	if num[/\d+/].to_f> 473.18
-		new_num = (num[/\d+/].to_f / 473.18).round(2)
+	if num[/(\d+)\.?(\d+)?/].to_f> 473.18
+		new_num = (num[/(\d+)\.?(\d+)?/].to_f / 473.18).round(2)
 		if new_num > 1.00
 			new_measurement = "#{new_num} pints"
 		else  
 			new_measurement = "#{new_num} pint"
 		end
-	elsif num[/\d+/].to_f > 236.59
-		new_num = (num[/\d+/].to_f / 236.59).round(2)
+	elsif num[/(\d+)\.?(\d+)?/].to_f > 236.59
+		new_num = (num[/(\d+)\.?(\d+)?/].to_f / 236.59).round(2)
 		if new_num > 1.00
 			new_measurement = "#{new_num} cups"
 		else  
 			new_measurement = "#{new_num} cup"
 		end
-	elsif num[/\d+/].to_f > 29.57
-		new_num = (num[/\d+/].to_f / 29.57).round(2)
+	elsif num[/(\d+)\.?(\d+)?/].to_f > 29.57
+		new_num = (num[/(\d+)\.?(\d+)?/].to_f / 29.57).round(2)
 		new_measurement = "#{new_num} fl oz"
-	elsif num[/\d+/].to_f > 14.79
-		new_num = (num[/\d+/].to_f / 14.79).round(2)
+	elsif num[/(\d+)\.?(\d+)?/].to_f > 14.79
+		new_num = (num[/(\d+)\.?(\d+)?/].to_f / 14.79).round(2)
 		if new_num > 1.00
 			new_measurement = "#{new_num} tablespoons"
 		else  
 			new_measurement = "#{new_num} tablespoon"
 		end
-	elsif num[/\d+/].to_f > 4.93
-		new_num = (num[/\d+/].to_f / 4.93).round(2)
+	elsif num[/(\d+)\.?(\d+)?/].to_f > 4.93
+		new_num = (num[/(\d+)\.?(\d+)?/].to_f / 4.93).round(2)
 		if new_num > 1.00
 			new_measurement = "#{new_num} teaspoons"
 		else  
@@ -40,22 +40,22 @@ end
 
 
 def self.l2cup(num)
-  if num[/[(\d+).?(\d+)?]/].to_f > 3.785
-		new_num = num[/[(\d+).?(\d+)?]/].to_f / 3.785
+  if num[/(\d+)\.?(\d+)?/].to_f > 3.785
+		new_num = (num[/(\d+)\.?(\d+)?/].to_f / 3.785).round(2)
 		if new_num > 1.00
 			new_measurement = "#{new_num} gallons"
 		else  
 			new_measurement = "#{new_num} gallon"
 		end
-	elsif num[/[(\d+).?(\d+)?]/].to_f > 0.946
-		new_num = num[/[(\d+).?(\d+)?]/].to_f / 0.946
+	elsif num[/(\d+)\.?(\d+)?/].to_f > 0.946
+		new_num = (num[/(\d+)\.?(\d+)?/].to_f / 0.946).round(2)
 		if new_num > 1.00
 			new_measurement = "#{new_num} quarts"
 		else  
 			new_measurement = "#{new_num} quart"
 		end
-	elsif num[/[(\d+).?(\d+)?]/].to_f > 0.473
-		new_num = num[/[(\d+).?(\d+)?]/].to_f / 0.473
+	elsif num[/(\d+)\.?(\d+)?/].to_f > 0.473
+		new_num = (num[/(\d+)\.?(\d+)?/].to_f / 0.473).round(2)
 		if new_num > 1.00
 			new_measurement = "#{new_num} pints"
 		else  
@@ -65,7 +65,7 @@ def self.l2cup(num)
 end
 
 def self.g2oz(num)
-	new_num = (num[/\d+/].to_f / 28.35).round(2)
+	new_num = (num[/(\d+)\.?(\d+)?/].to_f / 28.35).round(2)
 	if new_num > 1.00
 			new_measurement = "#{new_num} ounces"
 		else  
@@ -74,7 +74,7 @@ def self.g2oz(num)
 end	
 
 def self.kg2lb(num)
-	new_num = (num[/\d+/].to_f / 0.454).round(2)
+	new_num = (num[/(\d+)\.?(\d+)?/].to_f / 0.454).round(2)
 	if new_num > 1.00
 			new_measurement = "#{new_num} pounds"
 		else  
@@ -83,7 +83,7 @@ def self.kg2lb(num)
 end
 
 def self.c2in(num)
-	new_num = (num[/\d+/].to_f / 2.54).round(2)
+	new_num = (num[/(\d+)\.?(\d+)?/].to_f / 2.54).round(2)
 	if new_num > 1.00
 			new_measurement = "#{new_num} inches"
 		else  
@@ -91,11 +91,11 @@ def self.c2in(num)
 		end
 end
 
-# def self.c2f(num)
-# 	n = num[/\d+/].to_f
-# 	new_num = ((n*9)/5 + 32).round(2)
-# 	new_measurement = "#{new_num} fahrenheit"
-# end
+def self.c2f(num)
+	n = num[/\d+/].to_f
+	new_num = ((n*9)/5 + 32).round(2)
+	new_measurement = "#{new_num} °F"
+end
 
 
 def self.conversion(string)
@@ -104,7 +104,7 @@ def self.conversion(string)
 	string.gsub!('grams', 'gram')
 	string.gsub!('kilograms', 'kilogram')
 	string.gsub!('centimeters', 'centimeter')
-  string.gsub(/\d+\s?milliliter/){|num| "#{m2tea(num)}"}.gsub(/\d+\s?liter/){|num| "#{l2cup(num)}"}.gsub(/\d+\s?gram/){|num| "#{g2oz(num)}"}.gsub(/\d+\s?kilogram/){|num| "#{kg2lb(num)}"}.gsub(/\d+\s?centimeter/){|num| "#{c2in(num)}"}
+  string.gsub(/(\d+)\.?(\d+)?\s?milliliter/){|num| "#{m2tea(num)}"}.gsub(/(\d+)\.?(\d+)?\s?liter/){|num| "#{l2cup(num)}"}.gsub(/(\d+)\.?(\d+)?\s?gram/){|num| "#{g2oz(num)}"}.gsub(/(\d+)\.?(\d+)?\s?kilogram/){|num| "#{kg2lb(num)}"}.gsub(/(\d+)\.?(\d+)?\s?centimeter/){|num| "#{c2in(num)}"}.gsub(/(\d+)\.?(\d+)?\s?°C/){|num| "#{c2f(num)}"}
 end
 
 # .gsub(/\d+\s?°C/){|num| "#{c2f(num)}"}

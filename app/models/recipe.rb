@@ -92,7 +92,7 @@ def self.c2in(num)
 end
 
 def self.c2f(num)
-	n = num[/\d+/].to_f
+	n = num[/(\d+)\.?(\d+)?/].to_f
 	new_num = ((n*9)/5 + 32).round(2)
 	new_measurement = "#{new_num} °F"
 end

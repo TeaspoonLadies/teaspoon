@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'recipes/:id' => 'recipes#catalog'
   get '/shopping_lists' => 'shopping_lists#my_shopping_lists'
   get 'shopping_lists:id' => 'shopping_lists#catalog'
+  post '/' => 'recipes#create'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

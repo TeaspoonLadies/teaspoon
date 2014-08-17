@@ -65,12 +65,21 @@ def self.l2cup(num)
 end
 
 def self.g2oz(num)
-	new_num = (num[/(\d+)\.?(\d+)?/].to_f / 28.35).round(2)
-	if new_num > 1.00
+	if num[/(\d+)\.?(\d+)?/].to_f > 100
+		new_num = (num[/(\d+)\.?(\d+)?/].to_f / 454).round(2)
+		if new_num > 1.00
+			new_measurement = "#{new_num} pounds"
+		else  
+			new_measurement = "#{new_num} pound"
+		end
+	elsif num[/(\d+)\.?(\d+)?/].to_f > 28.35
+		new_num = (num[/(\d+)\.?(\d+)?/].to_f / 28.35).round(2)
+		if new_num > 1.00
 			new_measurement = "#{new_num} ounces"
 		else  
 			new_measurement = "#{new_num} ounce"
 		end
+	end	
 end	
 
 def self.kg2lb(num)

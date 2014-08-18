@@ -1,9 +1,9 @@
 require 'pry'
 class Recipe < ActiveRecord::Base
-
+	attr_accessor :data
   has_one :shopping_list
 
-def self.m2tea(num)
+def m2tea(num)
 	if num[/(\d+)\.?(\d+)?/].to_f> 473.18
 		new_num = (num[/(\d+)\.?(\d+)?/].to_f / 473.18).round(2)
 		if new_num > 1.00
@@ -39,7 +39,7 @@ def self.m2tea(num)
 end
 
 
-def self.l2cup(num)
+def l2cup(num)
   if num[/(\d+)\.?(\d+)?/].to_f > 3.785
 		new_num = (num[/(\d+)\.?(\d+)?/].to_f / 3.785).round(2)
 		if new_num > 1.00
@@ -64,7 +64,7 @@ def self.l2cup(num)
 	end
 end
 
-def self.g2oz(num)
+def g2oz(num)
 	if num[/(\d+)\.?(\d+)?/].to_f > 100
 		new_num = (num[/(\d+)\.?(\d+)?/].to_f / 454).round(2)
 		if new_num > 1.00
@@ -82,7 +82,7 @@ def self.g2oz(num)
 	end	
 end	
 
-def self.kg2lb(num)
+def kg2lb(num)
 	new_num = (num[/(\d+)\.?(\d+)?/].to_f / 0.454).round(2)
 	if new_num > 1.00
 			new_measurement = "#{new_num} pounds"
@@ -91,7 +91,7 @@ def self.kg2lb(num)
 		end
 end
 
-def self.c2in(num)
+def c2in(num)
 	new_num = (num[/(\d+)\.?(\d+)?/].to_f / 2.54).round(2)
 	if new_num > 1.00
 			new_measurement = "#{new_num} inches"
@@ -100,20 +100,20 @@ def self.c2in(num)
 		end
 end
 
-def self.c2f(num)
+def c2f(num)
 	n = num[/(\d+)\.?(\d+)?/].to_f
 	new_num = ((n*9)/5 + 32).round(2)
 	new_measurement = "#{new_num} °F"
 end
 
 
-def self.conversion(ingredient)
-	ingredient.gsub!('milliliters', 'milliliter')
-	ingredient.gsub!('liters', 'liter')
-	ingredient.gsub!('grams', 'gram')
-	ingredient.gsub!('kilograms', 'kilogram')
-	ingredient.gsub!('centimeters', 'centimeter')
-  ingredient.gsub(/(\d+)\.?(\d+)?\s?milliliter/){|num| "#{m2tea(num)}"}.gsub(/(\d+)\.?(\d+)?\s?liter/){|num| "#{l2cup(num)}"}.gsub(/(\d+)\.?(\d+)?\s?gram/){|num| "#{g2oz(num)}"}.gsub(/(\d+)\.?(\d+)?\s?kilogram/){|num| "#{kg2lb(num)}"}.gsub(/(\d+)\.?(\d+)?\s?centimeter/){|num| "#{c2in(num)}"}.gsub(/(\d+)\.?(\d+)?\s?°C/){|num| "#{c2f(num)}"}
+def conversion(data)
+	data.gsub!('milliliters', 'milliliter')
+	data.gsub!('liters', 'liter')
+	data.gsub!('grams', 'gram')
+	data.gsub!('kilograms', 'kilogram')
+	data.gsub!('centimeters', 'centimeter')
+  data.gsub(/(\d+)\.?(\d+)?\s?milliliter/){|num| "#{m2tea(num)}"}.gsub(/(\d+)\.?(\d+)?\s?liter/){|num| "#{l2cup(num)}"}.gsub(/(\d+)\.?(\d+)?\s?gram/){|num| "#{g2oz(num)}"}.gsub(/(\d+)\.?(\d+)?\s?kilogram/){|num| "#{kg2lb(num)}"}.gsub(/(\d+)\.?(\d+)?\s?centimeter/){|num| "#{c2in(num)}"}.gsub(/(\d+)\.?(\d+)?\s?°C/){|num| "#{c2f(num)}"}
 end
 
 # .gsub(/\d+\s?°C/){|num| "#{c2f(num)}"}

@@ -5,7 +5,7 @@ $(function(){
 		alert("clicked");
 		e.preventDefault();
 		// $("#results #text_area").text(Recipe.conversion(:content));
-		 $("#results #text_area").text(@recipe);
+		 $("#results #text_area").text(Recipe.new.conversion(@recipe(:ingredients));
 		// $("#results").change(function(e) {
 		// 	$("#text_area").text(Recipe.conversion(string));
 		// });

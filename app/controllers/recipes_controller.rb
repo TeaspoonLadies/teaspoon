@@ -5,10 +5,11 @@ def index
 end
 
 def create
-	# @recipe = Recipe.conversion(recipe_params[:ingredients])
-  @recipe = Recipe.new(recipe_params)
-  @recipe.save
-  redirect_to @recipe
+	@recipe = Recipe.conversion(recipe_params[:ingredients])
+   @recipe.save
+  # @recipe = Recipe.new(recipe_params)
+  # Recipe.conversion(@recipe[:ingredients])
+  redirect_to '/'
 end
 
 private

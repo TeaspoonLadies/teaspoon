@@ -118,5 +118,5 @@ end
 
 # .gsub(/\d+\s?°C/){|num| "#{c2f(num)}"}
 # print conversion("Today it is 25°C and tomorrow 27 °C. Today it is 6 milliliters and tomorrow 10 milliliters. Today it is 2 liter and tomorrow 3 liter.")
-print conversion("Today it is 500 milliliters and 300 milliliter and 40 milliliter, 16 milliliter and 5 milliliter. It is 5 liter and 1 liter and 0.5 liter. It is 500 grams. It is 30 kilogram. It is 400 centimeter. Tomorrow is 25°C.")
+# print conversion("Today it is 500 milliliters and 300 milliliter and 40 milliliter, 16 milliliter and 5 milliliter. It is 5 liter and 1 liter and 0.5 liter. It is 500 grams. It is 30 kilogram. It is 400 centimeter. Tomorrow is 25°C.")
 end

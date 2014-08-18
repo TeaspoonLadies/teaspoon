@@ -9,12 +9,14 @@ def create
   @recipe.save
   
   # @recipe = Recipe.new(:name => recipe_params[:name])
- #  @recipe.conversion(recipe_params[:ingredients])
+  # @recipe.conversion(recipe_params[:ingredients])
+  # @recipt.save
 
    # Recipe.new.conversion(@recipe[:ingredients])
   # @recipe = Recipe.new(recipe_params)
   # Recipe.conversion(@recipe[:ingredients])
-  redirect_to '/'
+  # render partial: 'recipe'
+  render 'index'
 end
 
 private

@@ -5,9 +5,12 @@ def index
 end
 
 def create
-	@recipe = Recipe.new.conversion(recipe_params[:ingredients])
+  @recipe = Recipe.new(recipe_params)
   @recipe.save
-  recipe = Recipe.conversion(@recipe[:ingredients])
+  
+  # @recipe = Recipe.new(:name => recipe_params[:name])
+ #  @recipe.conversion(recipe_params[:ingredients])
+
    # Recipe.new.conversion(@recipe[:ingredients])
   # @recipe = Recipe.new(recipe_params)
   # Recipe.conversion(@recipe[:ingredients])

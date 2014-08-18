@@ -1,7 +1,8 @@
 require 'pry'
 class Recipe < ActiveRecord::Base
-	attr_accessor :data
+
   has_one :shopping_list
+  before_save :conversion
 
 def m2tea(num)
 	if num[/(\d+)\.?(\d+)?/].to_f> 473.18
@@ -107,13 +108,14 @@ def c2f(num)
 end
 
 
-def conversion(data)
-	data.gsub!('milliliters', 'milliliter')
-	data.gsub!('liters', 'liter')
-	data.gsub!('grams', 'gram')
-	data.gsub!('kilograms', 'kilogram')
-	data.gsub!('centimeters', 'centimeter')
-  data.gsub(/(\d+)\.?(\d+)?\s?milliliter/){|num| "#{m2tea(num)}"}.gsub(/(\d+)\.?(\d+)?\s?liter/){|num| "#{l2cup(num)}"}.gsub(/(\d+)\.?(\d+)?\s?gram/){|num| "#{g2oz(num)}"}.gsub(/(\d+)\.?(\d+)?\s?kilogram/){|num| "#{kg2lb(num)}"}.gsub(/(\d+)\.?(\d+)?\s?centimeter/){|num| "#{c2in(num)}"}.gsub(/(\d+)\.?(\d+)?\s?°C/){|num| "#{c2f(num)}"}
+def conversion
+	unconverted = self.ingredients
+	unconverted.gsub!('milliliters', 'milliliter')
+	unconverted.gsub!('liters', 'liter')
+	unconverted.gsub!('grams', 'gram')
+	unconverted.gsub!('kilograms', 'kilogram')
+	unconverted.gsub!('centimeters', 'centimeter')
+  self.ingredients = unconverted.gsub(/(\d+)\.?(\d+)?\s?milliliter/){|num| "#{m2tea(num)}"}.gsub(/(\d+)\.?(\d+)?\s?liter/){|num| "#{l2cup(num)}"}.gsub(/(\d+)\.?(\d+)?\s?gram/){|num| "#{g2oz(num)}"}.gsub(/(\d+)\.?(\d+)?\s?kilogram/){|num| "#{kg2lb(num)}"}.gsub(/(\d+)\.?(\d+)?\s?centimeter/){|num| "#{c2in(num)}"}.gsub(/(\d+)\.?(\d+)?\s?°C/){|num| "#{c2f(num)}"}
 end
 
 # .gsub(/\d+\s?°C/){|num| "#{c2f(num)}"}

@@ -107,13 +107,13 @@ def self.c2f(num)
 end
 
 
-def self.conversion(string)
-	string.gsub!('milliliters', 'milliliter')
-	string.gsub!('liters', 'liter')
-	string.gsub!('grams', 'gram')
-	string.gsub!('kilograms', 'kilogram')
-	string.gsub!('centimeters', 'centimeter')
-  string.gsub(/(\d+)\.?(\d+)?\s?milliliter/){|num| "#{m2tea(num)}"}.gsub(/(\d+)\.?(\d+)?\s?liter/){|num| "#{l2cup(num)}"}.gsub(/(\d+)\.?(\d+)?\s?gram/){|num| "#{g2oz(num)}"}.gsub(/(\d+)\.?(\d+)?\s?kilogram/){|num| "#{kg2lb(num)}"}.gsub(/(\d+)\.?(\d+)?\s?centimeter/){|num| "#{c2in(num)}"}.gsub(/(\d+)\.?(\d+)?\s?°C/){|num| "#{c2f(num)}"}
+def self.conversion(ingredient)
+	ingredient.gsub!('milliliters', 'milliliter')
+	ingredient.gsub!('liters', 'liter')
+	ingredient.gsub!('grams', 'gram')
+	ingredient.gsub!('kilograms', 'kilogram')
+	ingredient.gsub!('centimeters', 'centimeter')
+  ingredient.gsub(/(\d+)\.?(\d+)?\s?milliliter/){|num| "#{m2tea(num)}"}.gsub(/(\d+)\.?(\d+)?\s?liter/){|num| "#{l2cup(num)}"}.gsub(/(\d+)\.?(\d+)?\s?gram/){|num| "#{g2oz(num)}"}.gsub(/(\d+)\.?(\d+)?\s?kilogram/){|num| "#{kg2lb(num)}"}.gsub(/(\d+)\.?(\d+)?\s?centimeter/){|num| "#{c2in(num)}"}.gsub(/(\d+)\.?(\d+)?\s?°C/){|num| "#{c2f(num)}"}
 end
 
 # .gsub(/\d+\s?°C/){|num| "#{c2f(num)}"}

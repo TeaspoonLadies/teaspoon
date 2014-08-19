@@ -41,12 +41,12 @@ end
 
 
 def l2cup(num)
-  if num[/(\d+)\.?(\d+)?/].to_f > 3.785
-		new_num = (num[/(\d+)\.?(\d+)?/].to_f / 3.785).round(2)
+	if num[/(\d+)\.?(\d+)?/].to_f < 0.946
+		new_num = (num[/(\d+)\.?(\d+)?/].to_f / 0.473).round(2)
 		if new_num > 1.00
-			new_measurement = "#{new_num} gallons"
+			new_measurement = "#{new_num} pints"
 		else  
-			new_measurement = "#{new_num} gallon"
+			new_measurement = "#{new_num} pint"
 		end
 	elsif num[/(\d+)\.?(\d+)?/].to_f < 3.785
 		new_num = (num[/(\d+)\.?(\d+)?/].to_f / 0.946).round(2)
@@ -55,12 +55,12 @@ def l2cup(num)
 		else  
 			new_measurement = "#{new_num} quart"
 		end
-	elsif num[/(\d+)\.?(\d+)?/].to_f < 0.946
-		new_num = (num[/(\d+)\.?(\d+)?/].to_f / 0.473).round(2)
+	elsif num[/(\d+)\.?(\d+)?/].to_f > 3.785
+		new_num = (num[/(\d+)\.?(\d+)?/].to_f / 3.785).round(2)
 		if new_num > 1.00
-			new_measurement = "#{new_num} pints"
+			new_measurement = "#{new_num} gallons"
 		else  
-			new_measurement = "#{new_num} pint"
+			new_measurement = "#{new_num} gallon"
 		end
 	end
 end

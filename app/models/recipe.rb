@@ -5,36 +5,36 @@ class Recipe < ActiveRecord::Base
   before_save :conversion
 
 def m2tea(num)
-	if num[/(\d+)\.?(\d+)?/].to_f> 473.18
-		new_num = (num[/(\d+)\.?(\d+)?/].to_f / 473.18).round(2)
+	if num[/(\d+)\.?(\d+)?/].to_f < 14.79
+		new_num = (num[/(\d+)\.?(\d+)?/].to_f / 4.93).round(2)
 		if new_num > 1.00
-			new_measurement = "#{new_num} pints"
+			new_measurement = "#{new_num} teaspoons"
 		else  
-			new_measurement = "#{new_num} pint"
-		end
-	elsif num[/(\d+)\.?(\d+)?/].to_f > 236.59
-		new_num = (num[/(\d+)\.?(\d+)?/].to_f / 236.59).round(2)
-		if new_num > 1.00
-			new_measurement = "#{new_num} cups"
-		else  
-			new_measurement = "#{new_num} cup"
-		end
-	elsif num[/(\d+)\.?(\d+)?/].to_f > 29.57
-		new_num = (num[/(\d+)\.?(\d+)?/].to_f / 29.57).round(2)
-		new_measurement = "#{new_num} fl oz"
-	elsif num[/(\d+)\.?(\d+)?/].to_f > 14.79
+			new_measurement = "#{new_num} teaspoon"
+		end	
+	elsif num[/(\d+)\.?(\d+)?/].to_f < 29.57
 		new_num = (num[/(\d+)\.?(\d+)?/].to_f / 14.79).round(2)
 		if new_num > 1.00
 			new_measurement = "#{new_num} tablespoons"
 		else  
 			new_measurement = "#{new_num} tablespoon"
 		end
-	elsif num[/(\d+)\.?(\d+)?/].to_f > 4.93
-		new_num = (num[/(\d+)\.?(\d+)?/].to_f / 4.93).round(2)
+	elsif num[/(\d+)\.?(\d+)?/].to_f < 236.59
+		new_num = (num[/(\d+)\.?(\d+)?/].to_f / 29.57).round(2)
+		new_measurement = "#{new_num} fl oz"
+	elsif num[/(\d+)\.?(\d+)?/].to_f < 473.18
+		new_num = (num[/(\d+)\.?(\d+)?/].to_f / 236.59).round(2)
 		if new_num > 1.00
-			new_measurement = "#{new_num} teaspoons"
+			new_measurement = "#{new_num} cups"
 		else  
-			new_measurement = "#{new_num} teaspoon"
+			new_measurement = "#{new_num} cup"
+		end		
+	elsif num[/(\d+)\.?(\d+)?/].to_f> 473.18
+		new_num = (num[/(\d+)\.?(\d+)?/].to_f / 473.18).round(2)
+		if new_num > 1.00
+			new_measurement = "#{new_num} pints"
+		else  
+			new_measurement = "#{new_num} pint"
 		end
 	end	
 end
@@ -48,14 +48,14 @@ def l2cup(num)
 		else  
 			new_measurement = "#{new_num} gallon"
 		end
-	elsif num[/(\d+)\.?(\d+)?/].to_f > 0.946
+	elsif num[/(\d+)\.?(\d+)?/].to_f < 3.785
 		new_num = (num[/(\d+)\.?(\d+)?/].to_f / 0.946).round(2)
 		if new_num > 1.00
 			new_measurement = "#{new_num} quarts"
 		else  
 			new_measurement = "#{new_num} quart"
 		end
-	elsif num[/(\d+)\.?(\d+)?/].to_f > 0.473
+	elsif num[/(\d+)\.?(\d+)?/].to_f < 0.946
 		new_num = (num[/(\d+)\.?(\d+)?/].to_f / 0.473).round(2)
 		if new_num > 1.00
 			new_measurement = "#{new_num} pints"
@@ -73,7 +73,7 @@ def g2oz(num)
 		else  
 			new_measurement = "#{new_num} pound"
 		end
-	elsif num[/(\d+)\.?(\d+)?/].to_f > 28.35
+	elsif num[/(\d+)\.?(\d+)?/].to_f < 100
 		new_num = (num[/(\d+)\.?(\d+)?/].to_f / 28.35).round(2)
 		if new_num > 1.00
 			new_measurement = "#{new_num} ounces"
@@ -110,11 +110,11 @@ end
 
 def conversion
 	unconverted = self.ingredients
-	unconverted.gsub!('milliliters', 'milliliter')
-	unconverted.gsub!('liters', 'liter')
-	unconverted.gsub!('grams', 'gram')
-	unconverted.gsub!('kilograms', 'kilogram')
-	unconverted.gsub!('centimeters', 'centimeter')
+	unconverted.gsub!((/\b[Mm]illiliters*\b|ml/), 'milliliter')
+	unconverted.gsub!((/\b[Ll]iters*\b|\bl\b/), 'liter')
+	unconverted.gsub!((/\b[Gg]grams*\b|\bg\b/), 'gram')
+	unconverted.gsub!((/\b[Kk]ilograms*\b|\bkg\b/), 'kilogram')
+	unconverted.gsub!((/\b[Cc]entimeters*\b|\bcm\b/), 'centimeter')
   self.ingredients = unconverted.gsub(/(\d+)\.?(\d+)?\s?milliliter/){|num| "#{m2tea(num)}"}.gsub(/(\d+)\.?(\d+)?\s?liter/){|num| "#{l2cup(num)}"}.gsub(/(\d+)\.?(\d+)?\s?gram/){|num| "#{g2oz(num)}"}.gsub(/(\d+)\.?(\d+)?\s?kilogram/){|num| "#{kg2lb(num)}"}.gsub(/(\d+)\.?(\d+)?\s?centimeter/){|num| "#{c2in(num)}"}.gsub(/(\d+)\.?(\d+)?\s?°C/){|num| "#{c2f(num)}"}
 end
 

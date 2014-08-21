@@ -86,19 +86,19 @@ end
 def kg2lb(num)
 	new_num = (num[/(\d+)\.?(\d+)?/].to_f / 0.454).round(2)
 	if new_num > 1.00
-			new_measurement = "#{new_num} pounds"
-		else  
-			new_measurement = "#{new_num} pound"
-		end
+		new_measurement = "#{new_num} pounds"
+	else  
+		new_measurement = "#{new_num} pound"
+	end
 end
 
 def c2in(num)
 	new_num = (num[/(\d+)\.?(\d+)?/].to_f / 2.54).round(2)
 	if new_num > 1.00
-			new_measurement = "#{new_num} inches"
-		else  
-			new_measurement = "#{new_num} inch"
-		end
+		new_measurement = "#{new_num} inches"
+	else  
+		new_measurement = "#{new_num} inch"
+	end
 end
 
 def c2f(num)

@@ -1,11 +1,11 @@
 class ShoppingListsController < ApplicationController
 
 	def index
-		@shopping_lists = Shopping_List.all
+		@shopping_lists = ShoppingList.all
 	end
 
 	def create
-  	@shopping_list = Shopping_List.new(shopping_list_params)
+  	@shopping_list = ShoppingList.new(shopping_list_params)
   	@shopping_list.save
   	render 'index'
 	end

@@ -1,5 +1,6 @@
 class ShoppingList < ActiveRecord::Base
   # belongs_to :user
+  before_save :grocery_list
   belongs_to :recipe
 
   def grocery_list

@@ -5,10 +5,19 @@
 		<%= javascript_include_tag "application" %>
 	</head>
 	<body>
+    <!-- <div id="content"> -->
+    <!-- <textarea id="text_area" rows="10" cols="70"></textarea> -->
+    <% content_for :shopping_list, "Grocery List" %>
+    <% @shopping_lists.each do |shopping| %>
+  
+        <%= shopping.content.html_safe %>
+  
+    <% end %>    
 
+
+  <!--   </div> -->
 	<%= link_to "My Recipes", recipes_path %>
-
-</body>
+  </body>
 </html>
 
 

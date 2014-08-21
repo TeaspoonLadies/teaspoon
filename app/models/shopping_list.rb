@@ -9,7 +9,7 @@ class ShoppingList < ActiveRecord::Base
     text.gsub!("\r\n", '</li><li><en-todo checked="false"/>')
     text.slice!(0..4)
     text << "</li>"
-    text.insert(0, "<en-note><h1>#{self.recipe.name}</h1><ul>")
+    text.insert(0, "<en-note><h1>#{recipe}</h1><ul>")
     text << "</ul></en-note>"
     self.content = text
   end

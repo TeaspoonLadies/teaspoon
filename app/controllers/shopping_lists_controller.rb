@@ -13,6 +13,6 @@ class ShoppingListsController < ApplicationController
 
 	private
 	def shopping_list_params
-		params.require(:shopping_list).permit(:content)
+		params.require(:shopping_list).permit(:recipe_id, :content)
 	end
 end

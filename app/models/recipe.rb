@@ -115,6 +115,7 @@ def conversion
 	unconverted.gsub!((/\b[Gg]grams*\b|\bg\b/), 'gram')
 	unconverted.gsub!((/\b[Kk]ilograms*\b|\bkg\b/), 'kilogram')
 	unconverted.gsub!((/\b[Cc]entimeters*\b|\bcm\b/), 'centimeter')
+  # binding.pry
   self.ingredients = unconverted.gsub(/(\d+)\.?(\d+)?\s?milliliter/){|num| "#{m2tea(num)}"}.gsub(/(\d+)\.?(\d+)?\s?liter/){|num| "#{l2cup(num)}"}.gsub(/(\d+)\.?(\d+)?\s?gram/){|num| "#{g2oz(num)}"}.gsub(/(\d+)\.?(\d+)?\s?kilogram/){|num| "#{kg2lb(num)}"}.gsub(/(\d+)\.?(\d+)?\s?centimeter/){|num| "#{c2in(num)}"}.gsub(/(\d+)\.?(\d+)?\s?°C/){|num| "#{c2f(num)}"}
 end
 

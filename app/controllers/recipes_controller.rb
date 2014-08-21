@@ -15,6 +15,10 @@ def create
   render 'index'
 end
 
+def show
+
+end
+
 private
 	def recipe_params
 		params.require(:recipe).permit(:name, :ingredients)

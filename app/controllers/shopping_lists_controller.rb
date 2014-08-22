@@ -15,6 +15,11 @@ class ShoppingListsController < ApplicationController
 		@shopping_list = ShoppingList.new
 	end
 
+	def show
+		@recipe = Recipe.find(params[:recipe_id])
+		@shopping_list = ShoppingList.find(params[:id])
+	end
+
 	private
 	def shopping_list_params
 		params.require(:shopping_list).permit(:recipe_id, :content)

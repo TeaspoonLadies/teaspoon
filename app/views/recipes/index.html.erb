@@ -11,6 +11,8 @@
 			<input type="submit" value="Convert Recipe!" id="convert_button">
 		</form> -->
 
+		<%= link_to "Log In with Evernote", evernote_login_path %>
+
 		<%= form_for :recipe, html: { id:'recipe_converter_form' } do |f| %>
 			<p>
 				<%= f.label :name %></br>

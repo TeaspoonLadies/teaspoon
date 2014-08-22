@@ -1,14 +1,17 @@
 Rails.application.routes.draw do
 
   root 'recipes#index'
-
-  get '/recipes' => 'recipes#index'
-  get 'recipes/:id' => 'recipes#show'
-  get '/shopping_lists' => 'shopping_lists#index'
-  get '/shopping_lists/new' => 'shopping_lists#new'
-  post '/shopping_lists' => 'shopping_lists#create'
-  get '/shopping_lists:id' => 'shopping_lists#show'
   post '/' => 'recipes#create'
+
+  get 'signup' => 'users#new'
+  get 'login' => 'sessions#new'
+  get 'logout' => 'sessions#destroy'
+  post 'sessions' => 'sessions#create'
+
+  resources :recipes do 
+    resources :shopping_lists
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

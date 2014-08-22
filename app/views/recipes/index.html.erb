@@ -6,8 +6,6 @@
 	</head>
 	<body>
 
-	<%= link_to "My Shopping Lists", shopping_lists_new_path %>
-
 		<!-- <form id="recipe_converter_form">
 			<textarea id="text_area" rows="10" cols="70"></textarea></br>
 			<input type="submit" value="Convert Recipe!" id="convert_button">
@@ -29,15 +27,6 @@
 			</p>
 		<% end %>
 
-	<div id="results">
-		<!-- <textarea id="text_area" rows="10" cols="70"></textarea> -->
-		<%= form_for :recipe, html: { id:'recipe_converter_form' } do |f| %>
-			<p>
-				<%= f.label :ingredients %></br>
-				<%= f.text_area :ingredients, rows: 10, cols: 70, id: 'text_area'%>
-			</p>
-		<% end %>	
-	</div>
 </body>
 </html>
 

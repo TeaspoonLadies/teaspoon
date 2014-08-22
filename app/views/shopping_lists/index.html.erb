@@ -8,6 +8,12 @@
 
 	<%= link_to "My Recipes", recipes_path %>
 
+	<h1>Listing Shopping Lists</h1>
+
+		<% @shopping_lists.each do |shopping_list| %>
+			<%= shopping_list.content.html_safe %>
+		<% end %>
+
 
 </body>
 </html>

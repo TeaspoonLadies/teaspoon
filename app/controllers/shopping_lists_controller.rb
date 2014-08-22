@@ -7,7 +7,17 @@ class ShoppingListsController < ApplicationController
 	def create
   	@shopping_list = ShoppingList.new(shopping_list_params)
   	@shopping_list.save
-  	render 'index'
+  	redirect_to recipe_shopping_lists_path(@shopping_list.recipe)
+	end
+
+	def new
+		@recipe = Recipe.find(params[:recipe_id])
+		@shopping_list = ShoppingList.new
+	end
+
+	def show
+		@recipe = Recipe.find(params[:recipe_id])
+		@shopping_list = ShoppingList.find(params[:id])
 	end
 
 	private

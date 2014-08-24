@@ -13,4 +13,5 @@ class ShoppingList < ActiveRecord::Base
     text << "</ul></en-note>"
     self.content = text
   end
+
 end

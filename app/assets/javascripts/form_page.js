@@ -1,18 +1,25 @@
-$(function(){
-	// $('#recipe_converter_form input[type=submit]').on("click", function(e) {
-	$('#recipe_converter_form #convert_button').on("click", function(e) {
-		console.log("button clicked");
-		alert("clicked");
-		e.preventDefault();
-		// $("#results #text_area").text(Recipe.conversion(:content));
-		$("#results #text_area").text((@recipe(:ingredients));
-		// $("#results").change(function(e) {
-		// 	$("#text_area").text(Recipe.conversion(string));
-		// });
-	});
-	
+// $(function(){
+// 	// $('#recipe_converter_form input[type=submit]').on("click", function(e) {
+// 	$('#recipe_converter_form #convert_button').on("click", function(e) {
+// 		console.log("button clicked");
+// 		alert("clicked");
+// 		e.preventDefault();
+// 		// $("#results #text_area").text(Recipe.conversion(:content));
+// 		$("#results #text_area").text((@recipe(:ingredients));
+// 		// $("#results").change(function(e) {
+// 		// 	$("#text_area").text(Recipe.conversion(string));
+// 		// });
+// 	});
+
+$(document).ready(function(){
+
+	$("#shopping_list_button").hide();
+
+});
 
 	$(document).on('#convert_button', '#recipe_converter_form', function(e) {
+		$("#ingredients").text("Converted Ingredients");
+		$("#shopping_list_button").show();
 		$.ajax({
 			type: 'GET',
 			url: $(this).attr('action'),

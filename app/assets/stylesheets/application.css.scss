@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require bootstrap.min
  //= depend_on_asset "bootstrap/glyphicons-halflings-regular.eot"
  //= depend_on_asset "bootstrap/glyphicons-halflings-regular.woff"
  //= depend_on_asset "bootstrap/glyphicons-halflings-regular.ttf"
@@ -32,4 +33,19 @@ body {
 
 .theme-showcase > p > .btn {
   margin: 5px 0;
+}
+
+.main-page {
+	background-image: url(../measuring_cups_spoons.jpg);
+}
+
+.teaspoon-title {
+	font-size: 50px;
+	color: black;
+	background-color:rgba(255,255,255,0.5);
+	background-repeat: repeat-x;
+}
+
+.intro-message {
+	width: 500px;
 }

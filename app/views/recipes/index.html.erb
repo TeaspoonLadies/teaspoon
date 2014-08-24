@@ -8,34 +8,35 @@
 
 	<%= render 'mainpage' %>
 
-		<form id="recipe_converter_form">
-			<textarea id="text_area" rows="10" cols="70"></textarea></br>
-			<input type="submit" value="Convert Recipe!" id="convert_button">
-		</form> -->
-
-		<%= link_to "Log In with Evernote", evernote_login_path %>
+		<center><div id="wrapper">
 
 		<%= form_for :recipe, html: { id:'recipe_converter_form' } do |f| %>
 			<p>
-				<%= f.label :name %> </br> 
+				<%= f.label :name, id: 'name' %> </br> 
 				<%= f.text_field :name %>
 			</p>
 
 			<p>
-				<%= f.label :ingredients %> </br>
+				<%= f.label :ingredients, id: 'ingredients' %> </br>
 				<%= f.text_area :ingredients, rows: 10, cols: 70, id: 'text_area'%>
 			</p>
 
 			<p>
 				<%= f.submit "Convert Recipe", id: 'convert_button'%>
 			</p>
+
+			<p>
+				<%= f.submit "Make Shopping List", id: 'shopping_list_button'%>
+			</p>
+
 		<% end %>
+		</div></center>
 
 </body>
 </html>
     <!-- /.intro-header -->
 
-    Page Content
+   <!--  Page Content -->
 
    <!--  <div class="content-section-a">
 
@@ -56,7 +57,7 @@
         </div>
         <!-- /.container -->
 
-    </div>
+    <!-- </div> -->
     <!-- /.content-section-a -->
 <!-- 
     <div class="content-section-b">
@@ -78,7 +79,7 @@
         </div>
         <!-- /.container -->
 
-    </div> -->
+    <!-- </div> -->
     <!-- /.content-section-b -->
 
     <!-- <div class="content-section-a">
@@ -100,7 +101,7 @@
         </div>
         <!-- /.container -->
 
-    </div>
+    <!-- </div> -->
     <!-- /.content-section-a -->
 
  <!--    <div class="banner">
@@ -129,7 +130,7 @@
         </div> -->
         <!-- /.container -->
 
-    </div>-->
+    <!-- </div> -->
     <!-- /.banner -->
 
     <!-- Footer -->

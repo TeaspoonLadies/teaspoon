@@ -11,10 +11,11 @@ class ShoppingListsController < ApplicationController
 
 	def create
   	@shopping_list = ShoppingList.new(shopping_list_params)
+  	@shopping_list.save
   	
   	respond_to do |format|
       if @shopping_list.save
-        format.html { redirect_to @shopping_list.recipe, notice: 'Shopping List was successfully created.' }
+        format.html { redirect_to recipe_shopping_lists_path(@shopping_list.recipe), notice: 'Shopping List was successfully created.' }
         format.json { render action: 'show', status: :created, location: @shopping_list }
       else
         format.html { render action: 'new' }
@@ -24,7 +25,7 @@ class ShoppingListsController < ApplicationController
 	end
 
 	def show
-		# @recipe = Recipe.find(params[:recipe_id])
+		@recipe = Recipe.find(params[:recipe_id])
 		@shopping_list = ShoppingList.find(params[:id])
 	end
 

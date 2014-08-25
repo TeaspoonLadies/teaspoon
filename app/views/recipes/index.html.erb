@@ -8,9 +8,9 @@
 
 	<%= render 'mainpage' %>
 
-		<center><div id="wrapper">
+		<div id="wrapper">
 
-		<%= form_for :recipe, remotehtml: { id:'recipe_converter_form' } do |f| %>
+		<center><%= form_for :recipe, html: { id:'recipe_converter_form' } do |f| %>
 			<p>
 				<%= f.label :name, id: 'name' %> </br> 
 				<%= f.text_field :name, id: 'name_field'%>
@@ -26,14 +26,16 @@
 			</p>
 
 			<p>
-				<%= f.submit "Make Shopping List", id: 'shopping_list_button'%>
+				<a href=".grocery_wrapper"><%= f.submit "Make Shopping List", id: 'shopping_list_button'%></a>
 			</p>
 
-		<% end %>
-		</div></center>
-        <div>
-        <div class="hello">
-        </div >
+		<% end %></center>
+		</div>
+
+        <div class="grocery_wrapper">
+           <div class="grocery_list">
+            
+            </div>
         </div>
 
 </body>

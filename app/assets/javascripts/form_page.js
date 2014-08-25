@@ -1,27 +1,34 @@
 $(function(){
-	$('#recipe_converter_form #convert_button').on("click", function(e) {
-		console.log("button clicked");
-		alert("clicked");
-		e.preventDefault();
+	$('.grocery_wrapper').hide();
+	// $('#recipe_converter_form #convert_button').on("click", function(e) {
+	// 	console.log("button clicked");
+	// 	alert("clicked");
+	// 	e.preventDefault();
 		$('#recipe_converter_form #convert_button').on("submit", function(e) {
 			e.preventDefault();
 			});
-	});
+	
 
 	$('#shopping_list_button').on("click", function(e) {
+		e.preventDefault();
+		$('.grocery_wrapper').slideDown();
+		$(".grocery_list").append(ShoppingList)
+		$(".grocery_list en-note:nth-child(3n)" ).remove();
+		$(".grocery_list en-note:nth-child(2)" ).remove();
+		console.log("button clicked");
+		// alert("clicked");
+
+	});
+
+	function ShoppingList(){
 		var name = $("#name_field").val()
 		var ingredients = $("#ingredient_area").val()
 		var formList = ingredients.replace(/\n/g, '</li><li><en-todo checked="false"/>')
 		var addLiBeginning = ('<li class="first_li"><en-todo checked="false"/>') + formList
-		var addName = "<en-note><h1>"+name+"</h1><ul>" + addLiBeginning
+		var addName = "<en-note><h1 id='recipe_name'>"+name+"</h1><ul id='recipe_list'>" + addLiBeginning
 		var createList= addName + "</ul></en-note>"
-		e.preventDefault();
-		$(".hello").append(createList)
-		console.log("button clicked");
-		alert("clicked");
-
-
-		});
+		return createList
+	}	
 
 
 		// text = self.recipe.ingredients

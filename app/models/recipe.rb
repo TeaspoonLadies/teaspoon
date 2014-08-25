@@ -107,7 +107,6 @@ def c2f(num)
 	new_measurement = "#{new_num} °F"
 end
 
-
 def conversion
 	unconverted = self.ingredients
 	unconverted.gsub!((/\b[Mm]illiliters*\b|ml/), 'milliliter')

@@ -11,16 +11,16 @@ end
 def create
   @recipe = Recipe.new(recipe_params)
   @recipe.save
-  # respond_to do |format|
-  #     if @recipe.save
-  #       format.html { redirect_to 'index', notice: 'recipe was successfully created.' }
-  #       format.json { render action: 'index', status: :created }
-  #     else
-  #       format.html { render action: 'index' }
-  #       # format.json { render json: @post.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  render action: 'index'
+  respond_to do |format|
+    if @recipe.save
+      format.html { redirect_to 'index', notice: 'recipe was successfully created.' }
+      format.json { render action: 'index', status: :created }
+      format.js {}
+    else
+      # format.html { render action: 'index' }
+      # format.json { render json: @post.errors, status: :unprocessable_entity }
+    end
+  end
 end
 
 def show

@@ -7,10 +7,13 @@
   <%= csrf_meta_tags %>
   <%= analytics_init if Rails.env.production? %>
 </head>
-<body>
-
+<body class="main-page">
+<%= render "layouts/intro" %>
+<%= render "layouts/navigation" %>
 
 <%= yield %>
+
+<%= render "layouts/footer" %>
 
 </body>
 </html>

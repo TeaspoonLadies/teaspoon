@@ -3,12 +3,12 @@ Rails.application.routes.draw do
   root 'recipes#index'
   post '/' => 'recipes#create'
   get '/auth/evernote', as: 'evernote_login'
-  get '/auth/evernote/callback', to: 'sessions#create'
+  get '/auth/:provider/callback', to: 'sessions#create'
 
   get 'signup' => 'users#new'
-  get 'login' => 'sessions#new'
-  get 'logout' => 'sessions#destroy'
-  post 'sessions' => 'sessions#create'
+  # get 'login' => 'sessions#new'
+  get '/logout' => 'sessions#destroy', as: 'evernote_logout'
+  # post 'sessions' => 'sessions#create'
 
   resources :sessions
   resources :users, :only => [:new, :show, :index]

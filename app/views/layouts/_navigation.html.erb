@@ -18,7 +18,12 @@
                     <a href="#">About</a>
                 </li>
                 <li>
-                    <%= link_to "Log In", evernote_login_path %>
+                    <% if current_user%>
+                        Welcome <%= current_user.name %>
+                        <%= link_to "Log Out", evernote_logout_path %>
+                    <% else %>
+                        <%= link_to "Log In", evernote_login_path %>
+                    <% end %>           
                 </li>
             </ul>
         </div>

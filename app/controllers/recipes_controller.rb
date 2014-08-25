@@ -33,7 +33,7 @@ private
   end
 
 	def recipe_params
-		params.require(:recipe).permit(:name, :ingredients, :shopping_list_ids => [], :shopping_lists_attributes => [:recipe_id, :content])
+		params.require(:recipe).permit(:name, :ingredients, :user_id, :shopping_list_ids => [], :shopping_lists_attributes => [:recipe_id, :content])
 	end
 
 end

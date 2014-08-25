@@ -15,7 +15,7 @@ $(function(){
 		$(".grocery_list").append(ShoppingList)
 		$(".grocery_list en-note:nth-child(3n)" ).remove();
 		$(".grocery_list en-note:nth-child(2)" ).remove();
-		console.log("button clicked");
+		// console.log("button clicked");
 		// alert("clicked");
 
 	});
@@ -26,7 +26,7 @@ $(function(){
 		var formList = ingredients.replace(/\n/g, '</li><li><en-todo checked="false"/>')
 		var addLiBeginning = ('<li class="first_li"><en-todo checked="false"/>') + formList
 		var addName = "<en-note><h1 id='recipe_name'>"+name+"</h1><ul id='recipe_list'>" + addLiBeginning
-		var createList= addName + "</ul></en-note>"
+		var createList= addName + "</ul><button id='export_button'> Export Recipe</button></en-note>"
 		return createList
 	}	
 

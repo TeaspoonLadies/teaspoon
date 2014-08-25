@@ -9,13 +9,14 @@ $(function(){
 	});
 
 	$('#shopping_list_button').on("click", function(e) {
+		var name = $("#name_field").val()
 		var ingredients = $("#ingredient_area").val()
-		// var newIngredients = ('<li><en-todo checked="false"/>')+ingredients+('</li>')
-		var newIngredients = ingredients.replace(/\n/g, '</li><li><en-todo checked="false"/>')
-		var updatedIngredients = ('<li><en-todo checked="false"/>') + newIngredients
-		// "<li>".concat(newIngredients)
+		var formList = ingredients.replace(/\n/g, '</li><li><en-todo checked="false"/>')
+		var addLiBeginning = ('<li class="first_li"><en-todo checked="false"/>') + formList
+		var addName = "<en-note><h1>"+name+"</h1><ul>" + addLiBeginning
+		var createList= addName + "</ul></en-note>"
 		e.preventDefault();
-		$(".hello").append(updatedIngredients)
+		$(".hello").append(createList)
 		console.log("button clicked");
 		alert("clicked");
 

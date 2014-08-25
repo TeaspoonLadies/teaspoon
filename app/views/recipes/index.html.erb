@@ -13,7 +13,7 @@
 		<%= form_for :recipe, remotehtml: { id:'recipe_converter_form' } do |f| %>
 			<p>
 				<%= f.label :name, id: 'name' %> </br> 
-				<%= f.text_field :name %>
+				<%= f.text_field :name, id: 'name_field'%>
 			</p>
 
 			<p>

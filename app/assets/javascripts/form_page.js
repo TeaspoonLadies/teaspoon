@@ -1,5 +1,5 @@
 $(function(){
-	$('.grocery_wrapper').hide();
+	$('#grocery_wrapper').hide();
 	$('#shopping_list_button').hide();
 
 	$('#recipe_converter_form #convert_button').on("click", function() {	
@@ -9,8 +9,8 @@ $(function(){
 
 	$('#shopping_list_button').on("click", function(e) {
 		e.preventDefault();
-		$('.grocery_wrapper').slideDown();
-		$(".grocery_list").append(ShoppingList());
+		$('#grocery_wrapper').slideDown();
+		$("#grocery_list").append(ShoppingList());
 	});
 
 	function ShoppingList(){

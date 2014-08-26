@@ -28,7 +28,7 @@ gem 'omniauth-evernote'
 gem 'evernote-thrift', '~> 1.25.1'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+gem 'fractional', '~> 1.0.1'
 # Use unicorn as the app server
 # gem 'unicorn'
 

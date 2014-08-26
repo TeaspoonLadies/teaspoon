@@ -67,6 +67,7 @@ GEM
       railties (>= 3.0.0)
     ffi (1.9.3)
     formatador (0.2.5)
+    fractional (1.0.1)
     google-analytics-rails (0.0.6)
     guard (2.6.1)
       formatador (>= 0.2.4)
@@ -232,6 +233,7 @@ DEPENDENCIES
   database_cleaner
   evernote-thrift (~> 1.25.1)
   factory_girl_rails
+  fractional (~> 1.0.1)
   google-analytics-rails
   guard-rspec
   jbuilder (~> 2.0)

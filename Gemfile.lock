@@ -107,7 +107,6 @@ GEM
       hashie (>= 1.2, < 4)
       rack (~> 1.0)
     omniauth-evernote (1.2.1)
-      evernote-thrift
       multi_json (~> 1.0)
       omniauth-oauth (~> 1.0)
     omniauth-oauth (1.0.1)
@@ -231,6 +230,7 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.0.0)
   database_cleaner
+  evernote-thrift (~> 1.25.1)
   factory_girl_rails
   google-analytics-rails
   guard-rspec

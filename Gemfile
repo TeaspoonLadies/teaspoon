@@ -24,6 +24,8 @@ gem 'spring',        group: :development
 
 gem 'omniauth'
 gem 'omniauth-evernote'
+# gem 'evernote', '~> 1.2.1'
+gem 'evernote-thrift', '~> 1.25.1'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
